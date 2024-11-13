@@ -21,6 +21,7 @@ enum IO {IN, OUT};
 enum COMPATSHAPE {TRIANGLEUP, TRIANGLEQR, TRIANGLEDOWN, SQUARE, LINE, CUSTOM};
 enum OP {NOOP, ADD, SUB, MULT, DECOMP};
 enum CODELETS {POPLIN, POPOPS, POPRAND};
+enum TEMPLATE {V};
 
 
 class graphConfig {
@@ -80,6 +81,10 @@ class graphConfig {
     public:
         graphConfig(boost::program_options::variables_map& vm);
         graphConfig(std::map<std::string, long unsigned int>& graphDesc);
+        void addCodelet(long unsigned int cdlt);
+        void addCustomCodelet(std::string filename);
+        void buildInternalTemplate(long unsigned int& core, long unsigned int& template, long unsigned int& dim);
+        void buildExternalTemplate(long unsigned int& template);
         void buildLayers(long unsigned int& core, long unsigned int& layer_id, long unsigned int& num_tensors, long unsigned int& dim, std::vector<long unsigned int>& mappings);
         void buildLayers(long unsigned int& core, long unsigned int& layer_id, long unsigned int& num_tensors, std::vector<long unsigned int>& dims, std::vector<long unsigned int>& mappings);
         void plotVertex(long unsigned int& core, long unsigned int& layer_id, long unsigned int& idx, long unsigned int& cps_id, long unsigned int& input, long unsigned int& output, long unsigned int& tile_id, std::string& vertexName);
