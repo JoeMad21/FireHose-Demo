@@ -27,6 +27,7 @@ int main(int argc, char *argv[]) {
     long unsigned int num_tiles = 0;
     long unsigned int max_layers_per_core = 0;
     long unsigned int max_tensors_per_core = 0;
+    long unsigned int max_tensors_per_layer = 0;
     long unsigned int max_progs_per_core = 0;
     long unsigned int buf_depth = 0;
 
@@ -34,7 +35,7 @@ int main(int argc, char *argv[]) {
         ("help", "produce help message")
         ("num_transfers", po::value<long unsigned int>(&con_task)->default_value(0), "")
         ("con_task", po::value<long unsigned int>(&op)->default_value(0), "")
-        ("op", po::value<long unsigned int>(&op)->default_value(0P::NOOP), "Preselected operation for the IPU")
+        ("op", po::value<long unsigned int>(&op)->default_value(0), "Preselected operation for the IPU")
         ("num_inputs", po::value<long unsigned int>(&num_inputs)->default_value(0), "Number of inputs into the system")
         ("num_outputs", po::value<long unsigned int>(&num_outputs)->default_value(0), "Number of outputs into the system")
         ("dtype", po::value<long unsigned int>(&dtype)->default_value(0), "Data type for the IPU")
