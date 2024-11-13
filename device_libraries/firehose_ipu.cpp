@@ -13,7 +13,7 @@ void matMul(boost::program_options::variables_map& vm) {
     myGraphConfig.addCodelet(CODELETS::POPOPS);
 
     // Add custom codelets
-    myGraphConfig.addCustomCodelet("io_codelet.gp")
+    myGraphConfig.addCustomCodelet("io_codelet.gp");
 
     std::cout << "Added Codelets!" << std::endl;
 
