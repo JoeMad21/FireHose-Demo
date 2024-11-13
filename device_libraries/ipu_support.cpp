@@ -706,9 +706,9 @@ void graphConfig::addOp(long unsigned int& core, long unsigned int& layer, long 
  * 
  * @return void: Modifies several members in graphConfig
  */
-void graphConfig::buildInternalTemplate(long unsigned int& core, long unsigned int& template, long unsigned int& dim) {
+void graphConfig::buildInternalTemplate(long unsigned int& core, long unsigned int& templte, long unsigned int& dim) {
 
-    switch(template) {
+    switch(templte) {
         case TEMPLATE::V:
             this->buildLayers(core, 0, 2, dim);
             this->buildLayers(core, 1, 1, dim);
@@ -742,9 +742,9 @@ void graphConfig::dupeCore(long unsigned int& srcCore, long unsigned int& dstCor
  * 
  * @return void: Modifies several members in graphConfig
  */
-void graphConfig::buildExternalTemplate(long unsigned int& template) {
+void graphConfig::buildExternalTemplate(long unsigned int& templte) {
 
-    switch(template) {
+    switch(templte) {
         case TEMPLATE::V:
             this->dupeCore(0, 1);
             this->dupeCore(0, 2);
