@@ -79,11 +79,11 @@ class graphConfig {
         void allocatePrograms();
     public:
         graphConfig();
-        void buildLayers(long unsigned int& core, long unsigned int& layer_id, long unsigned int& num_tensors, long unsigned int& dim, std::vector<long unsigned int>& mappings = {});
-        void buildLayers(long unsigned int& core, long unsigned int& layer_id, long unsigned int& num_tensors, std::vector<long unsigned int>& dims, std::vector<long unsigned int>& mappings = {});
+        void buildLayers(long unsigned int& core, long unsigned int& layer_id, long unsigned int& num_tensors, long unsigned int& dim, std::vector<long unsigned int>& mappings);
+        void buildLayers(long unsigned int& core, long unsigned int& layer_id, long unsigned int& num_tensors, std::vector<long unsigned int>& dims, std::vector<long unsigned int>& mappings);
         void plotVertex(long unsigned int& core, long unsigned int& layer_id, long unsigned int& idx, long unsigned int& cps_id, long unsigned int& input, long unsigned int& output, long unsigned int& tile_id, std::string& vertexName);
 
-}
+};
 
     // Input Settings
     // long unsigned int num_inputs;
