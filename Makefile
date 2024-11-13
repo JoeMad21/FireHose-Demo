@@ -3,7 +3,7 @@ CC = g++
 all: firehose
 
 firehose: libipu.a
-	$(CC) -fopenmp firehose_main.cpp -L/home/jomad21/myFiles/FireHose-Demo/device_libraries -lipu -lpoplar -lpoplin -lpoputil -lpopops -lboost_program_options -o firehose
+	$(CC) -fopenmp firehose_main.cpp -L/home/jomad21/myFiles/FireHose-Demo/device_libraries -lipu -lpoplar -lpoplin -lpoputil -lpopops -boost_program_options -o firehose
 libipu.a: mylib.o
 	ar rcs ./device_libraries/libipu.a ./device_libraries/mylib.o
 mylib.o:
