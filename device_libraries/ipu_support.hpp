@@ -21,8 +21,7 @@ enum IO {IN, OUT};
 enum COMPATSHAPE {TRIANGLEUP, TRIANGLEQR, TRIANGLEDOWN, SQUARE, LINE, CUSTOM};
 enum OP {NOOP, ADD, SUB, MULT, DECOMP};
 enum CODELETS {POPLIN, POPOPS, POPRAND};
-enum TEMPLATE {V};
-
+enum TEMPLATE {V, X};
 
 class graphConfig {
     private:
