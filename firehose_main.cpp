@@ -4,10 +4,6 @@
 #include <ctime>
 #include <chrono>
 
-enum TASK {TENSOR_DECOMP, MAT_MUL, MAT_ADD, TRANSPOSE, CONVOLUTION};
-enum HARDWARE {IPU, MODEL, CPU};
-enum COMPATSHAPE {TRIANGLEUP, TRIANGLEQR, TRIANGLEDOWN, SQUARE, LINE};
-
 int main(int argc, char *argv[]) {
 
     namespace po = boost::program_options;
