@@ -73,10 +73,10 @@ class graphConfig {
 
 
         //
-        getDevice();
-        allocateVirtualGraphs();
-        allocateStreams();
-        allocatePrograms();
+        void getDevice();
+        void allocateVirtualGraphs();
+        void allocateStreams();
+        void allocatePrograms();
     public:
         graphConfig();
         void buildLayers(long unsigned int& core, long unsigned int& layer_id, long unsigned int& num_tensors, long unsigned int& dim, std::vector<long unsigned int>& mappings = {});
