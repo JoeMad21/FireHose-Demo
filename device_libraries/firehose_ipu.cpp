@@ -5,6 +5,11 @@
 #define CONSUMER 1
 
 void matMul(boost::program_options::variables_map& vm) {
+
+    long unsigned int c = 0;
+    long unsigned int tmp = TEMPLATE::V;
+    long unsigned int size = 16;
+
     graphConfig myGraphConfig(vm);
 
     std::cout << "Adding Codelets..." << std::endl;
@@ -20,7 +25,7 @@ void matMul(boost::program_options::variables_map& vm) {
     // Build Model
     std::cout << "Building Model..." << std::endl;
 
-    myGraphConfig.buildInternalTemplate(0, TEMPLATE::V, 16);
+    myGraphConfig.buildInternalTemplate(c, tmp, size);
 
     std::cout << "Built Model!" << std::endl;
 
@@ -28,7 +33,7 @@ void matMul(boost::program_options::variables_map& vm) {
 
     std::cout << "Adding Programs..." << std::endl;
 
-    myGraphConfig.buildExternalTemplate(TEMPLATE::V);
+    myGraphConfig.buildExternalTemplate(tmp);
 
     std::cout << "Added Programs!" << std::endl;
 
