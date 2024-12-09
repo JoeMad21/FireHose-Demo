@@ -4,13 +4,13 @@
 #define PRODUCER 0
 #define CONSUMER 1
 
-void matMul(boost::program_options::variables_map& vm) {
+void matMul() {
 
     long unsigned int c = 0;
     long unsigned int tmp = TEMPLATE::V;
     long unsigned int size = 16;
 
-    graphConfig myGraphConfig(vm);
+    graphConfig myGraphConfig();
 
     std::cout << "Adding Codelets..." << std::endl;
 
