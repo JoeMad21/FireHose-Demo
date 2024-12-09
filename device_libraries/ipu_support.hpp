@@ -1,6 +1,7 @@
 #pragma once
 
 //#include <boost/program_options.hpp>
+#include <nlohmann/json.hpp>
 
 #include <vector>
 #include <algorithm>
@@ -81,6 +82,7 @@ class graphConfig {
     public:
         //graphConfig(boost::program_options::variables_map& vm);
         graphConfig(std::map<std::string, long unsigned int>& graphDesc);
+        graphConfig();
         void addCodelet(long unsigned int cdlt);
         void addCustomCodelet(std::string filename);
         void buildInternalTemplate(long unsigned int& core, long unsigned int& templte, long unsigned int& dim);
