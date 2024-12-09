@@ -10,7 +10,7 @@ void matMul() {
     long unsigned int tmp = TEMPLATE::V;
     long unsigned int size = 16;
 
-    graphConfig myGraphConfig();
+    graphConfig myGraphConfig;
 
     std::cout << "Adding Codelets..." << std::endl;
 
