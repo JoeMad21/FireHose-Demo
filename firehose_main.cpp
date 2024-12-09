@@ -4,7 +4,7 @@
 #include <ctime>
 #include <chrono>
 
-//int main(int argc, char *argv[]) {
+int main(int argc, char *argv[]) {
 
     //namespace po = boost::program_options;
 
