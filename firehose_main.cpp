@@ -68,6 +68,9 @@ int main(int argc, char *argv[]) {
         throw std::runtime_error("Could not open JSON file");
     }
 
+    nlohmann::json jsonData;
+    jsonFile >> jsonData;
+
     op = jsonData["op"];
 
     std::clock_t startcputime = std::clock();
