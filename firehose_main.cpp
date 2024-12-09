@@ -63,7 +63,7 @@ int main(int argc, char *argv[]) {
         //}
 
     // Read JSON file
-    std::ifstream jsonFile("graphconfig.json");
+    std::ifstream jsonFile("./device_libraries/graphconfig.json");
     if (!jsonFile.is_open()) {
         throw std::runtime_error("Could not open JSON file");
     }
