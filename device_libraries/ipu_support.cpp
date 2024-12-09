@@ -10,35 +10,39 @@
  * 
  * @return Creates a graphConfig object
  */
-void graphConfig::graphConfig(boost::program_options::variables_map& vm) {
 
-    // Application Settings
-    this->op = graphDesc["op"].as<long unsigned int>();
-    this->num_inputs = graphDesc["num_inputs"].as<long unsigned int>();
-    this->num_outputs = graphDesc["num_outputs"].as<long unsigned int>();
-    this->dtype = graphDesc["dtype"].as<long unsigned int>();
+graphConfig::graphConfig(const std::string& jsonFilePath) {
+    // Read JSON file
+    std::ifstream jsonFile("graphconfig.json");
+    if (!jsonFile.is_open()) {
+        throw std::runtime_error("Could not open JSON file");
+    }
 
-    // Device Settings
-    this->hardware = graphDesc["hardware"].as<long unsigned int>();
-    this->num_devices = graphDesc["num_devices"].as<long unsigned int>();
+    // Parse JSON data
+    nlohmann::json jsonData;
+    jsonFile >> jsonData;
 
-    // Design Settings
-    this->num_cores = graphDesc["num_cores"].as<long unsigned int>();
-    this->map_tensor = graphDesc["map_tensor"].as<long unsigned int>();
-    this->map_vertex = graphDesc["map_vertex"].as<long unsigned int>();
-    this->comPat_Internal = graphDesc["comPat_Internal"].as<long unsigned int>();
-    this->comPat_External = graphDesc["comPat_External"].as<long unsigned int>();
-    this->core_tiles = graphDesc["start_idx"].as<long unsigned int>();
-    this->num_tiles = graphDesc["num_tiles"].as<long unsigned int>();
-    this->max_layers_per_core = graphDesc["max_layers_per_core"].as<long unsigned int>();
-    this->max_tensors_per_layer = graphDesc["max_tensors_per_layer"].as<long unsigned int>();
-    this->max_progs_per_core = graphDesc["max_progs_per_core"].as<long unsigned int>();
-
-    // Optimization Settings
-    this->buf_depth = graphDesc["buf_depth"].as<long unsigned int>();
+    // Directly assign JSON values to member variables
+    this->op = jsonData["op"];
+    this->num_inputs = jsonData["num_inputs"];
+    this->num_outputs = jsonData["num_outputs"];
+    this->dtype = jsonData["dtype"];
+    this->hardware = jsonData["hardware"];
+    this->num_devices = jsonData["num_devices"];
+    this->num_cores = jsonData["num_cores"];
+    this->map_tensor = jsonData["map_tensor"];
+    this->map_vertex = jsonData["map_vertex"];
+    this->comPat_Internal = jsonData["comPat_Internal"];
+    this->comPat_External = jsonData["comPat_External"];
+    this->core_tiles = jsonData["start_idx"];
+    this->num_tiles = jsonData["num_tiles"];
+    this->max_layers_per_core = jsonData["max_layers_per_core"];
+    this->max_tensors_per_layer = jsonData["max_tensors_per_layer"];
+    this->max_progs_per_core = jsonData["max_progs_per_core"];
+    this->buf_depth = jsonData["buf_depth"];
 
     // Get Device
-    poplar::Device device = getDevice(graphDesc["hardware"].as<long unsigned int>(), graphDesc["num_devices"].as<long unsigned int>());
+    poplar::Device device = getDevice(this->hardware, this->num_devices);
     this->device = device;
 
     // Graph Setup
@@ -52,13 +56,61 @@ void graphConfig::graphConfig(boost::program_options::variables_map& vm) {
     // Allocate DataStreams (Connections from CPU to IPU)
     this->allocateStreams(); //this->strms member
 
-    //Allocate Program Memory
+    // Allocate Program Memory
     this->allocateComputeSets(); // this->cps member
     this->allocateVertices(); // this->vtx member
     this->allocatePrograms(); // this->prgs member
-
-    return;
 }
+
+//void graphConfig::graphConfig(boost::program_options::variables_map& vm) {
+
+    // Application Settings
+    //this->op = graphDesc["op"].as<long unsigned int>();
+    //this->num_inputs = graphDesc["num_inputs"].as<long unsigned int>();
+    //this->num_outputs = graphDesc["num_outputs"].as<long unsigned int>();
+    //this->dtype = graphDesc["dtype"].as<long unsigned int>();
+
+    // Device Settings
+    //this->hardware = graphDesc["hardware"].as<long unsigned int>();
+    //this->num_devices = graphDesc["num_devices"].as<long unsigned int>();
+
+    // Design Settings
+    //this->num_cores = graphDesc["num_cores"].as<long unsigned int>();
+    //this->map_tensor = graphDesc["map_tensor"].as<long unsigned int>();
+    //this->map_vertex = graphDesc["map_vertex"].as<long unsigned int>();
+    //this->comPat_Internal = graphDesc["comPat_Internal"].as<long unsigned int>();
+    //this->comPat_External = graphDesc["comPat_External"].as<long unsigned int>();
+    //this->core_tiles = graphDesc["start_idx"].as<long unsigned int>();
+    //this->num_tiles = graphDesc["num_tiles"].as<long unsigned int>();
+    //this->max_layers_per_core = graphDesc["max_layers_per_core"].as<long unsigned int>();
+    //this->max_tensors_per_layer = graphDesc["max_tensors_per_layer"].as<long unsigned int>();
+    //this->max_progs_per_core = graphDesc["max_progs_per_core"].as<long unsigned int>();
+
+    // Optimization Settings
+    //this->buf_depth = graphDesc["buf_depth"].as<long unsigned int>();
+
+    // Get Device
+    //poplar::Device device = getDevice(graphDesc["hardware"].as<long unsigned int>(), graphDesc["num_devices"].as<long unsigned int>());
+    //this->device = device;
+
+    // Graph Setup
+    //std::cout << "Creating Graph..." << std::endl;
+    //poplar::Graph graph(this->device.getTarget());
+    //this->graph = graph;
+    //this->allocateVirtualGraphs(); // this->vgraph member
+    //this->buildCores();
+    //std::cout << "Created Graph!" << std::endl;
+
+    // Allocate DataStreams (Connections from CPU to IPU)
+    //this->allocateStreams(); //this->strms member
+
+    //Allocate Program Memory
+    //this->allocateComputeSets(); // this->cps member
+    //this->allocateVertices(); // this->vtx member
+    //this->allocatePrograms(); // this->prgs member
+
+    //return;
+//}
 
 
 /**
