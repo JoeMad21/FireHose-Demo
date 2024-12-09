@@ -1,6 +1,6 @@
 #pragma once
 
-#include <boost/program_options.hpp>
+//#include <boost/program_options.hpp>
 
 #include <vector>
 #include <algorithm>
@@ -79,7 +79,7 @@ class graphConfig {
         void allocateStreams();
         void allocatePrograms();
     public:
-        graphConfig(boost::program_options::variables_map& vm);
+        //graphConfig(boost::program_options::variables_map& vm);
         graphConfig(std::map<std::string, long unsigned int>& graphDesc);
         void addCodelet(long unsigned int cdlt);
         void addCustomCodelet(std::string filename);
