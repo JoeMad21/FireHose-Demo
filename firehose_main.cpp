@@ -62,12 +62,20 @@
             //return 1;
         //}
 
+    // Read JSON file
+    std::ifstream jsonFile("graphconfig.json");
+    if (!jsonFile.is_open()) {
+        throw std::runtime_error("Could not open JSON file");
+    }
+
+    op = jsonData["op"];
+
     std::clock_t startcputime = std::clock();
     double cpu_duration = (std::clock() - startcputime) / (double)CLOCKS_PER_SEC;
     auto wcts = std::chrono::system_clock::now();
     std::chrono::duration<double> wctduration = (std::chrono::system_clock::now() - wcts);
 
-    switch(vm["con_task"].as<long unsigned int>()) {
+    switch(op) {
         case TASK::TENSOR_DECOMP:
             startcputime = std::clock();
             wcts = std::chrono::system_clock::now();
