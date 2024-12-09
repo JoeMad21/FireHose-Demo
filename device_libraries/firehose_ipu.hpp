@@ -24,10 +24,16 @@ void printMatrix(std::string matrix_name, std::vector<float> matrix, int cols, i
 
 void createIdentityMatrix(std::vector<float>& vec_id, int row, int col);
 
-void tensorDecomp(boost::program_options::variables_map& vm);
-void matMul(boost::program_options::variables_map& vm);
-void matAdd(boost::program_options::variables_map& vm);
-void transpose(boost::program_options::variables_map& vm);
-void convolution(boost::program_options::variables_map& vm);
+//void tensorDecomp(boost::program_options::variables_map& vm);
+//void matMul(boost::program_options::variables_map& vm);
+//void matAdd(boost::program_options::variables_map& vm);
+//void transpose(boost::program_options::variables_map& vm);
+//void convolution(boost::program_options::variables_map& vm);
+
+void tensorDecomp();
+void matMul();
+void matAdd();
+void transpose();
+void convolution();
 
 //void placeholder(long unsigned int row, long unsigned int col, long unsigned int num_streams, long unsigned int num_devices);
