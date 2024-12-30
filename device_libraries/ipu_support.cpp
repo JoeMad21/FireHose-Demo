@@ -11,7 +11,7 @@
  * @return Creates a graphConfig object
  */
 
-graphConfig::graphConfig(const std::string& jsonFilePath) {
+graphConfig::graphConfig() {
     // Read JSON file
     std::ifstream jsonFile("graphconfig.json");
     if (!jsonFile.is_open()) {
@@ -661,16 +661,20 @@ void graphConfig::connectCPU(long unsigned int& io, long unsigned int& core, std
       {"bufferingDepth", std::to_string(this->buf_depth)},
     };
 
+    std::string tnsr_name;
+
     switch(io) {
         case IO::IN:
-            this->strms[IO::IN][0] = this->vgraphs[core].addHostToDeviceFIFO(db_name, poplar::FLOAT, dim*dim, poplar::ReplicatedStreamMode::REPLICATE, streamOpts);
+            tnsr_name = "Tensor " + std::to_string(tensor_idx) + " of Layer " + std::to_string(layer_id) + " in Core " + std::to_string(core);
+            this->strms[IO::IN][stream_id] = this->vgraphs[core].addHostToDeviceFIFO(tnsr, poplar::FLOAT, dim*dim, poplar::ReplicatedStreamMode::REPLICATE, streamOpts);
             combined.add(poplar::program::Copy(strms[IO::IN][stream_id], tensors[core][layer_id][tensor_idx]));
             combined.add(original);
             progs[core][prog_idx] = combined;
             break;
 
         case IO::OUT:
-            this->strms[IO::OUT][0] = this->vgraphs[core].addDeviceToHostFIFO(db_name, poplar::FLOAT, this->v1*this->v2, streamOpts);
+            tnsr_name = "Tensor " + std::to_string(tensor_idx) + " of Layer " + std::to_string(layer_id) + " in Core " + std::to_string(core);
+            this->strms[IO::OUT][stream_id] = this->vgraphs[core].addDeviceToHostFIFO(tnsr_name, poplar::FLOAT, , streamOpts);
             combined.add(original);
             combined.add(poplar::program::Copy(tensors[core][layer_id][tensor_idx], strms[IO::OUT][stream_id]));
             progs[core][prog_idx] = combined;
