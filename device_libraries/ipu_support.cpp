@@ -48,7 +48,7 @@ graphConfig::graphConfig() {
     // Graph Setup
     std::cout << "Creating Graph..." << std::endl;
     poplar::Graph graph(this->device.getTarget());
-    this->graph = graph;
+    this->graph = std::move(graph);
     this->allocateVirtualGraphs(); // this->vgraph member
     this->buildCores();
     std::cout << "Created Graph!" << std::endl;
@@ -214,7 +214,7 @@ void graphConfig::getDevice() {
 
     std::cout << "Got Device!" << std::endl;
 
-    this->device = temp_device;
+    this->device = std::move(temp_device);
 
     return;
 }
