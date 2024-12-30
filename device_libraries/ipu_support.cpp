@@ -1,4 +1,4 @@
-#include "ipu_support.hpp"
+t#include "ipu_support.hpp"
 
 /**
  * @brief Quick use constructor to try out a design
@@ -256,15 +256,13 @@ void graphConfig::allocateVirtualGraphs() {
  * @return void: Modifies the graphConfig's vgraph's member
  */
 void graphConfig::buildCores() {
-
-    poplar::Graph base_graph = this->graph;
     long unsigned int start_idx;
     long unsigned int num_tiles;
 
     for(int i = 0; i < this->num_cores; i++) {
         start_idx = this->core_tiles[i];
         num_tiles = this->num_tiles[i];
-        this->vgraphs[i] = base_graph.createVirtualGraph(start_idx, start_idx+num_tiles-1);
+        this->vgraphs[i] = this->graph->createVirtualGraph(start_idx, start_idx+num_tiles-1);
     }
 
     return;
