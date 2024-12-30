@@ -124,57 +124,57 @@ graphConfig::graphConfig() {
  * @return Creates a graphConfig object
  */
 
-void graphConfig::graphConfig(std::map<std::string, long unsigned int>& graphDesc) {
+//void graphConfig::graphConfig(std::map<std::string, long unsigned int>& graphDesc) {
 
     // Application Settings
-    this->op = graphDesc["op"];
-    this->num_inputs = graphDesc["num_inputs"];
-    this->num_outputs = graphDesc["num_outputs"];
-    this->dtype = graphDesc["dtype"];
+    //this->op = graphDesc["op"];
+    //this->num_inputs = graphDesc["num_inputs"];
+    //this->num_outputs = graphDesc["num_outputs"];
+    //this->dtype = graphDesc["dtype"];
 
     // Device Settings
-    this->hardware = graphDesc["hardware"];
-    this->num_devices = graphDesc["num_devices"];
+    //this->hardware = graphDesc["hardware"];
+    //this->num_devices = graphDesc["num_devices"];
 
     // Design Settings
-    this->num_cores = graphDesc["num_cores"];
-    this->map_tensor = graphDesc["map_tensor"];
-    this->map_vertex = graphDesc["map_vertex"];
-    this->comPat_Internal = graphDesc["comPat_Internal"];
-    this->comPat_External = graphDesc["comPat_External"];
-    this->core_tiles = graphDesc["start_idx"];
-    this->num_tiles = graphDesc["num_tiles"];
-    this->max_layers_per_core = graphDesc["max_layers_per_core"];
-    this->max_tensors_per_layer = graphDesc["max_tensors_per_layer"];
-    this->max_progs_per_core = graphDesc["max_progs_per_core"];
+    //this->num_cores = graphDesc["num_cores"];
+    //this->map_tensor = graphDesc["map_tensor"];
+    //this->map_vertex = graphDesc["map_vertex"];
+    //this->comPat_Internal = graphDesc["comPat_Internal"];
+    //this->comPat_External = graphDesc["comPat_External"];
+    //this->core_tiles = graphDesc["start_idx"];
+    //this->num_tiles = graphDesc["num_tiles"];
+    //this->max_layers_per_core = graphDesc["max_layers_per_core"];
+    //this->max_tensors_per_layer = graphDesc["max_tensors_per_layer"];
+    //this->max_progs_per_core = graphDesc["max_progs_per_core"];
 
     // Optimization Settings
-    this->buf_depth = graphDesc["buf_depth"];
+    //this->buf_depth = graphDesc["buf_depth"];
 
     // Get Device
-    poplar::Device device = getDevice(graphDesc["hardware"], graphDesc["num_devices"]);
-    this->device = device;
+    //poplar::Device device = getDevice(graphDesc["hardware"], graphDesc["num_devices"]);
+    //this->device = device;
 
     //const unsigned totalTiles = device.getTarget().getNumTiles();
 
     // Graph Setup
-    std::cout << "Creating Graph..." << std::endl;
-    poplar::Graph graph(this->device.getTarget());
-    this->graph = graph;
-    this->allocateVirtualGraphs(); // this->vgraph member
-    this->buildCores();
-    std::cout << "Created Graph!" << std::endl;
+    //std::cout << "Creating Graph..." << std::endl;
+    //poplar::Graph graph(this->device.getTarget());
+    //this->graph = graph;
+    //this->allocateVirtualGraphs(); // this->vgraph member
+    //this->buildCores();
+    //std::cout << "Created Graph!" << std::endl;
 
     // Allocate DataStreams (Connections from CPU to IPU)
-    this->allocateStreams(); //this->strms member
+    //this->allocateStreams(); //this->strms member
 
     //Allocate Program Memory
-    this->allocateComputeSets(); // this->cps member
-    this->allocateVertices(); // this->vtx member
-    this->allocatePrograms(); // this->prgs member
+    //this->allocateComputeSets(); // this->cps member
+    //this->allocateVertices(); // this->vtx member
+    //this->allocatePrograms(); // this->prgs member
 
-    return;
-}
+    //return;
+//}
 
 
 /**
