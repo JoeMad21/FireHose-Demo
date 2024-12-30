@@ -48,12 +48,23 @@ class graphConfig {
         poplar::Engine engine;
 
         // Basic Settings
+        long unsigned int num_transfers;
+        long unsigned int con_task;
+        long unsigned int op;
+        long unsigned int dtype;
+
         long unsigned int num_devices;
         long unsigned int hardware;
         long unsigned int map;
         long unsigned int num_cores;
-        //long unsigned int comPat;
-        //long unsigned int dtype;
+        long unsigned int map_vertex;
+        long unsigned int comPat_Internal;
+        long unsigned int comPat_External;
+        long unsigned int core_tiles;
+        long unsigned int max_layers_per_core = 0;
+        long unsigned int max_tensors_per_core = 0;
+        long unsigned int max_tensors_per_layer = 0;
+        long unsigned int max_progs_per_core = 0;
 
         long unsigned int num_inputs;
         long unsigned int num_outputs;
