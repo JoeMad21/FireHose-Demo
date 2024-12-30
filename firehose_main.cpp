@@ -90,7 +90,7 @@ int main(int argc, char *argv[]) {
         case TASK::MAT_MUL:
             startcputime = std::clock();
             wcts = std::chrono::system_clock::now();
-            //matMul(vm);
+            matMul();
             cpu_duration = (std::clock() - startcputime) / (double)CLOCKS_PER_SEC;
             wctduration = (std::chrono::system_clock::now() - wcts);
             break;
