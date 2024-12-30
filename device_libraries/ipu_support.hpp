@@ -17,6 +17,7 @@
 
 #include <poplin/codelets.hpp>
 #include <poprand/codelets.hpp>
+#include <popops/codelets.hpp>
 
 #include <poputil/TileMapping.hpp>
 
