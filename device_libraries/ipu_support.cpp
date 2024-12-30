@@ -43,7 +43,7 @@ graphConfig::graphConfig() {
 
     // Get Device
     poplar::Device device = getDevice(this->hardware, this->num_devices);
-    this->device = device;
+    this->device = std::move(device);
 
     // Graph Setup
     std::cout << "Creating Graph..." << std::endl;
