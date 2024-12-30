@@ -291,7 +291,7 @@ void graphConfig::allocateStreams() {
     long unsigned int dim2 = std::max(this->num_inputs, this->num_outputs); // We don't mind wasting a little space
 
 
-    std::vector< std::vector<poplar::DataStreams>> strms(dim1, sstd::vector<poplar::VertexRef>>(dim2));
+    std::vector< std::vector<poplar::DataStream>> strms(dim1, sstd::vector<poplar::VertexRef>>(dim2));
 
     this->strms = strms;
 
