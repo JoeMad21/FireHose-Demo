@@ -58,6 +58,7 @@ class graphConfig {
         long unsigned int hardware;
         long unsigned int map;
         long unsigned int num_cores;
+        long unsigned int map_tensor:
         long unsigned int map_vertex;
         long unsigned int comPat_Internal;
         long unsigned int comPat_External;
