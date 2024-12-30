@@ -101,6 +101,9 @@ class graphConfig {
         void dupeCore();
         void addOp();
         void connectCPU();
+        void buildCores();
+        void allocateComputeSets();
+        void allocateVertices();
 
         graphConfig();
         void addCodelet(long unsigned int cdlt);
