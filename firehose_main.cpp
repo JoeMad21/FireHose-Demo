@@ -126,5 +126,7 @@ int main(int argc, char *argv[]) {
     fileStream << "Finished in " << cpu_duration << " seconds [CPU Clock] " << std::endl;
     fileStream << "Finished in " << wctduration.count() << " seconds [Wall Clock]" << std::endl;
 
+    std::cout << "Done." << std::endl;
+
     return 0;
 }
