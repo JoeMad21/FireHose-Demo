@@ -3,6 +3,7 @@
 //#include <boost/program_options.hpp>
 #include <nlohmann/json.hpp>
 #include <fstream>
+#include <iostream>
 
 #include <vector>
 #include <algorithm>
