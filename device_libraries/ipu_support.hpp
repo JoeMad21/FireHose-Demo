@@ -14,6 +14,8 @@
 #include <poplar/IPUModel.hpp>
 #include <poplar/Tensor.hpp>
 #include <poplar/ReplicatedStreamMode.hpp>
+#include <poplin/MatMul.hpp>
+#include <poprand>
 
 #include <poputil/TileMapping.hpp>
 
