@@ -74,6 +74,7 @@ class graphConfig {
         long unsigned int max_cps;
         long unsigned int max_tensor_layers;
         long unsigned int max_vtx;
+        long unsigned int max_layer;
         std::vector<long unsigned int> input_dims;
 
         std::vector<long unsigned int> start_tile_idx;
@@ -89,13 +90,18 @@ class graphConfig {
 
 
         //
+
+    public:
+        //graphConfig(boost::program_options::variables_map& vm);
+        //graphConfig(std::map<std::string, long unsigned int>& graphDesc);
         void getDevice();
         void allocateVirtualGraphs();
         void allocateStreams();
         void allocatePrograms();
-    public:
-        //graphConfig(boost::program_options::variables_map& vm);
-        //graphConfig(std::map<std::string, long unsigned int>& graphDesc);
+        void dupeCore();
+        void addOp();
+        void connectCPU();
+
         graphConfig();
         void addCodelet(long unsigned int cdlt);
         void addCustomCodelet(std::string filename);
