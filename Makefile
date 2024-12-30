@@ -4,12 +4,15 @@ all: firehose
 
 firehose: libipu.a
 	$(CC) -fopenmp firehose_main.cpp -L./device_libraries -lipu -lpoplar -lpoplin -lpoputil -lpopops -o firehose
-libipu.a: mylib.o
-	ar rcs ./device_libraries/libipu.a ./device_libraries/mylib.o
-mylib.o:
+libipu.a: mylib1.o mylib2.o
+	ar rcs ./device_libraries/libipu.a ./device_libraries/mylib1.o
+	ar rcs ./device_libraries/libipu.a ./device_libraries/mylib2.o
+mylib1.o:
 	popc -o ./device_libraries/io_codelet.gp ./device_libraries/io_codelet.cpp
 	popc -o ./device_libraries/transpose.gp ./device_libraries/transpose.cpp
-	$(CC) -c -fopenmp ./device_libraries/firehose_ipu.cpp -o ./device_libraries/mylib.o
+	$(CC) -c -fopenmp ./device_libraries/firehose_ipu.cpp -o ./device_libraries/mylib1.o
+mylib2.o:
+	$(CC) -c -fopenmp ./device_libraries/ipu_support.cpp -o ./device_libraries/mylib2.o
 
 verify:
 	$(CC) verify.cpp -o verify
