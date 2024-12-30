@@ -81,7 +81,7 @@ class graphConfig {
         void allocatePrograms();
     public:
         //graphConfig(boost::program_options::variables_map& vm);
-        graphConfig(std::map<std::string, long unsigned int>& graphDesc);
+        //graphConfig(std::map<std::string, long unsigned int>& graphDesc);
         graphConfig();
         void addCodelet(long unsigned int cdlt);
         void addCustomCodelet(std::string filename);
